@@ -1,0 +1,6 @@
+{
+  "name": "change-in-progress", "version": "1.0.0", "private": true, "type": "module",
+  "description": "An interactive constructivist installation about Riga's public transport.",
+  "engines": { "node": ">=20" },
+  "scripts": { "dev": "node server.mjs", "start": "node server.mjs --production", "build": "node scripts/build.mjs", "test": "node --test" }
+}
