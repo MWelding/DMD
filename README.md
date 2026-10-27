@@ -2,6 +2,18 @@
 
 A dark, interactive photographic collage about Riga's public transport, memory, and change. This redesign uses the supplied train-window view, the twelve-frame arrival sequence, original field photographs, and the original supporting-studies collage.
 
+## Offline version for a locked computer
+
+Download and extract this repository, then open **[offline/START-HERE.html](offline/START-HERE.html)**
+directly in your browser. No Node.js, internet or installation is needed on that
+computer. Animations, sound, cursor reveal and interactive cards are included.
+
+Use **Edit content** inside the offline edition to change text and card photos,
+then **Download updated HTML** to keep an edited, transferable copy.
+See **[offline instructions](OFFLINE.md)**, including importing/exporting your
+existing text file. To regenerate it on your preparation computer, run
+`npm run build:offline`.
+
 ## Quick edit links
 
 These links open the actual files in this repository, including on GitHub.
@@ -9,6 +21,7 @@ These links open the actual files in this repository, including on GitHub.
 | What you want to change | Open this file |
 | --- | --- |
 | All text in the + cards: titles, descriptions, captions and dates | **[PANEL-TEXT.txt](PANEL-TEXT.txt)** |
+| Offline edition and built-in editor | **[Open the offline HTML file](offline/START-HERE.html)** · [Instructions](OFFLINE.md) |
 | Which photograph appears at each card's timeline stop | **[Card image mapping](src/chapters.js)** |
 | All photograph files | [Images folder](public/assets/) |
 | Main collage objects and photographic cutout shapes | [Collage artwork](src/artwork.js) |

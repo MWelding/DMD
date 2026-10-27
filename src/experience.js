@@ -8,6 +8,8 @@ import { TimeRoute } from './time-route.js';
 import { FragmentTransition } from './fragments.js';
 import { CollageMotion } from './collage-motion.js';
 import { PanelTextStore } from './panel-text.js';
+import { assetURL } from './assets.js';
+import { initOfflineEditor, applyOfflineImages } from './offline-editor.js';
 
 const $=selector=>document.querySelector(selector);
 const $$=selector=>[...document.querySelectorAll(selector)];
@@ -17,7 +19,10 @@ const trainView=new TrainView({canvas:$('#landscape'),reducedMotion});
 const fragmentTransition=new FragmentTransition({arrival:$('#arrival'),installation,scene,reducedMotion});
 const ambience=new RailAmbience(),visited=new Set(),chapterPositions=new Map();
 let frame=0,pointer,returnFocus,currentStory,storyRevision=0,toastTimer,activeRoute;
-const panelText=new PanelTextStore({exhibits,chapters,onChange:refreshOpenStory});
+const offlineSession=globalThis.__OFFLINE_SESSION__;
+const panelText=new PanelTextStore({exhibits,chapters,onChange:refreshOpenStory,
+  load:offlineSession?async()=>offlineSession.text:undefined,
+  transform:offlineSession?content=>applyOfflineImages(content,offlineSession.cardImages):undefined});
 const escapeText=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 $('#past-art').innerHTML=artwork();$('#present-art').innerHTML=artwork(true);
 const collageMotion=new CollageMotion({installation,scene,reducedMotion});
@@ -54,7 +59,7 @@ function refreshOpenStory(){
   $('.story-category').textContent=item.category;
   $('#story-title').textContent=item.title;
   $('.story-intro').textContent=item.intro;
-  $$('.route-image').forEach((image,index)=>image.alt=stops[index].caption);
+  $$('.route-image').forEach((image,index)=>{image.alt=stops[index].caption;const src=assetURL(stops[index].image);if(image.getAttribute('src')!==src)image.src=src;});
   $$('.route-stops [data-chapter]').forEach((button,index)=>button.lastChild.textContent=stops[index].year);
   activeRoute.chapters=stops;
   activeRoute.paint(activeRoute.position);
@@ -65,7 +70,8 @@ function showStory(id,trigger){
   activeRoute?.destroy();currentStory=id;visited.add(id);
   $$(`[data-object="${id}"]`).forEach(button=>button.dataset.visited='true');
   const stops=panelText.chapters[id];$('#story-dialog').dataset.object=id;
-  $('#story-content').innerHTML=`<div class="story-layout"><div class="story-visual route-visual">${stops.map((chapter,index)=>`<img class="story-image route-image" src="/assets/${chapter.image}" alt="${escapeText(chapter.caption)}" data-past="${index===0}" style="opacity:${index===0?1:0}">`).join('')}<div class="story-image-caption"></div></div><article class="story-text"><p class="story-category">${escapeText(item.category)}</p><h2 id="story-title">${escapeText(item.title)}</h2><p class="story-intro">${escapeText(item.intro)}</p><div class="time-route"><div class="route-track"><span class="route-rail"></span><span class="route-distance"></span><span class="route-carriage" aria-hidden="true">▥</span><input class="time-range" type="range" min="0" max="2" step="0.01" value="0" aria-label="Journey through ${id} history" aria-controls="chapter-panel"></div><div class="route-stops story-era-tabs" role="tablist" aria-label="${id} journey stops">${stops.map((chapter,index)=>`<button role="tab" id="era-tab-${index}" aria-controls="chapter-panel" aria-selected="${index===0}" tabindex="${index===0?0:-1}" data-chapter="${index}"><span class="route-station" aria-hidden="true"></span>${escapeText(chapter.year)}</button>`).join('')}</div><output class="route-position" aria-hidden="true"></output></div><div id="chapter-panel" role="tabpanel" tabindex="0" aria-live="polite"></div></article></div>`;
+  $('#story-content').innerHTML=`<div class="story-layout"><div class="story-visual route-visual">${stops.map((chapter,index)=>`<img class="story-image route-image" src="${assetURL(chapter.image)}" alt="${escapeText(chapter.caption)}" data-past="${index===0}" style="opacity:${index===0?1:0}">`).join('')}<div class="story-image-caption"></div></div><article class="story-text"><p class="story-category">${escapeText(item.category)}</p><h2 id="story-title">${escapeText(item.title)}</h2><p class="story-intro">${escapeText(item.intro)}</p>${offlineSession?'<button type="button" class="offline-card-edit" id="edit-story-copy">Edit this card</button>':''}<div class="time-route"><div class="route-track"><span class="route-rail"></span><span class="route-distance"></span><span class="route-carriage" aria-hidden="true">▥</span><input class="time-range" type="range" min="0" max="2" step="0.01" value="0" aria-label="Journey through ${id} history" aria-controls="chapter-panel"></div><div class="route-stops story-era-tabs" role="tablist" aria-label="${id} journey stops">${stops.map((chapter,index)=>`<button role="tab" id="era-tab-${index}" aria-controls="chapter-panel" aria-selected="${index===0}" tabindex="${index===0?0:-1}" data-chapter="${index}"><span class="route-station" aria-hidden="true"></span>${escapeText(chapter.year)}</button>`).join('')}</div><output class="route-position" aria-hidden="true"></output></div><div id="chapter-panel" role="tabpanel" tabindex="0" aria-live="polite"></div></article></div>`;
+  if(offlineSession)$('#edit-story-copy').addEventListener('click',()=>offlineSession.openEditor(id));
   let renderedChapter;
   activeRoute=new TimeRoute({root:$('.time-route'),images:$$('.route-image'),chapters:stops,initial:chapterPositions.get(id)??0,reducedMotion,onChange:sample=>{
     chapterPositions.set(id,sample.position);
@@ -122,9 +128,13 @@ $('#replay-button').addEventListener('click',()=>{window.scrollTo({top:0,behavio
 reducedMotion.addEventListener('change',event=>{if(event.matches&&journey.playing)journey.finish();});
 $('#begin-button').focus({preventScroll:true});
 // Local, decoded assets keep the chapter changes immediate, without external services.
-new Set(Object.values(chapters).flatMap(values=>values.map(chapter=>chapter.image))).forEach(file=>{const image=new Image();image.src=`/assets/${file}`;});
+new Set(Object.values(chapters).flatMap(values=>values.map(chapter=>chapter.image))).forEach(file=>{const image=new Image();image.src=assetURL(file);});
 
-// Watch only the small text file; an open panel keeps its scroll and slider position.
+// The offline editor applies in-memory changes; the normal site watches its text file.
 panelText.refresh();
-setInterval(()=>{if(!document.hidden)panelText.refresh();},2000);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)panelText.refresh();});
+if(offlineSession){
+  initOfflineEditor({session:offlineSession,store:panelText,onPreview:id=>showStory(id),onPanelChange:open=>collageMotion.setPanelOpen(open)});
+}else{
+  setInterval(()=>{if(!document.hidden)panelText.refresh();},2000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)panelText.refresh();});
+}

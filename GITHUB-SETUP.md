@@ -6,6 +6,10 @@ Repository: [MWelding/DMD](https://github.com/MWelding/DMD)
 
 ## Download and run
 
+**No Node.js on your computer?** Download and extract the repository, then open
+[offline/START-HERE.html](offline/START-HERE.html) in your browser. It includes a
+built-in editor. See [offline instructions](OFFLINE.md).
+
 Clone the repository:
 
 ```sh
@@ -40,6 +44,7 @@ reference in the code.
 npm run check:docs
 npm test
 npm run build
+npm run build:offline
 npm start
 ```
 

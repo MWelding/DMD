@@ -2,6 +2,9 @@
 
 [Back to the README and image links](README.md)
 
+For a computer without Node.js, use the [offline edition](OFFLINE.md). It has a
+built-in text and card-photo editor and can download an updated HTML copy.
+
 ## Change the + card text
 
 Open [PANEL-TEXT.txt](PANEL-TEXT.txt) in a text editor, or edit that file on GitHub.

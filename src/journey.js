@@ -1,4 +1,5 @@
 import { arrivalFrames } from './chapters.js';
+import { assetURL } from './assets.js';
 
 export function waitForBeat(ms, signal) {
   return new Promise((resolve,reject)=>{
@@ -16,7 +17,7 @@ export class Journey {
     this.ready=this.preload();
   }
   async preload() {
-    const sources=['/assets/journey/forest-window.jpg','/assets/journey/window.jpg','/assets/journey/modern-carriage.png',...arrivalFrames];
+    const sources=[...['journey/forest-window.jpg','journey/window.jpg','journey/modern-carriage.png'].map(assetURL),...arrivalFrames];
     const results=await Promise.all(sources.map(async path=>{
       const image=new Image(); image.src=path;
       try {await image.decode();return path;}catch{return null;}
@@ -62,7 +63,7 @@ export class Journey {
       this.status.textContent='Rīga. The train has stopped.';
       await waitForBeat(this.reducedMotion.matches?600:2700,signal);
       this.surface.dataset.phase='unfolding';
-      await this.onReveal({image:frames.at(-1)??'/assets/journey/arrival-11.jpg',signal});
+      await this.onReveal({image:frames.at(-1)??assetURL('journey/arrival-11.jpg'),signal});
       if(signal.aborted)return;
       this.finish();
     }catch(error){if(error.name!=='AbortError'){this.finish();console.warn('The journey could not play.',error);}}

@@ -29,6 +29,11 @@ export function parsePanelText(text) {
   return values;
 }
 
+export function serializePanelText(values) {
+  return '; Editable installation text. Keep the [headings] unchanged.\n\n' +
+    [...values].map(([key, value]) => `[${key}]\n${value}\n`).join('\n');
+}
+
 export function applyPanelText(text, originalExhibits, originalChapters) {
   const values = parsePanelText(text);
   const exhibits = structuredClone(originalExhibits), chapters = structuredClone(originalChapters);
@@ -56,21 +61,22 @@ export async function loadPanelText(fetcher = fetch) {
 }
 
 export class PanelTextStore {
-  constructor({ exhibits, chapters, onChange = () => {}, load = loadPanelText }) {
+  constructor({ exhibits, chapters, onChange = () => {}, load = loadPanelText, transform = content => content }) {
     this.originalExhibits = structuredClone(exhibits);
     this.originalChapters = structuredClone(chapters);
     this.exhibits = exhibits;
     this.chapters = chapters;
     this.onChange = onChange;
     this.load = load;
+    this.transform = transform;
   }
-  refresh() {
+  refresh(force = false) {
     if (this.pending) return this.pending;
     this.pending = this.load().then(text => {
-      if (text === this.lastText) return false;
+      if (text === this.lastText && !force) return false;
       // Parse completely before changing the visible content. Keep the last good
       // version if a file is being saved or a heading was accidentally changed.
-      const content = applyPanelText(text, this.originalExhibits, this.originalChapters);
+      const content = this.transform(applyPanelText(text, this.originalExhibits, this.originalChapters));
       Object.assign(this, content);
       this.lastText = text;
       this.onChange();

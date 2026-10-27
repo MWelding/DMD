@@ -1,5 +1,6 @@
 import { exhibits } from './content.js';
-export const arrivalFrames = Array.from({length:12},(_,index)=>`/assets/journey/arrival-${String(index).padStart(2,'0')}.jpg`);
+import { assetURL } from './assets.js';
+export const arrivalFrames = Array.from({length:12},(_,index)=>assetURL(`journey/arrival-${String(index).padStart(2,'0')}.jpg`));
 export const chapters = {
   train: [
     { year:'1975', label:'MEMORY', title:'A familiar rhythm', image:'journey/legacy-train.jpg', caption:'The railway we remember.', text:exhibits.train.past },

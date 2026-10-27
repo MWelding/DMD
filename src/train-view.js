@@ -1,9 +1,10 @@
+import { assetURL } from './assets.js';
 // The world moves independently of the physical carriage and window reflections.
 export class TrainView {
   constructor({canvas,reducedMotion}){
     this.canvas=canvas;this.context=canvas.getContext('2d',{alpha:false});this.reducedMotion=reducedMotion;
     this.speed=.55;this.targetSpeed=.55;this.distance=0;this.phase='ready';
-    this.image=new Image();this.image.src='/assets/journey/countryside-panorama.png';
+    this.image=new Image();this.image.src=assetURL('journey/countryside-panorama.png');
     this.image.decode().then(()=>{this.loaded=true;this.canvas.classList.add('loaded');this.resume();}).catch(()=>{});
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(canvas);this.resize();
     document.addEventListener('visibilitychange',()=>{if(document.hidden)this.pause();else if(this.phase!=='end')this.resume();});

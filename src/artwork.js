@@ -1,8 +1,9 @@
+import { assetURL } from './assets.js';
 // Photographic fragments are cut with SVG geometry; the source images remain intact.
 let fragmentId=0;
 const fragment = (file, viewBox, points, w, h) => {
   const id=`photo-cutout-${++fragmentId}`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" class="photo-fragment" aria-hidden="true"><defs><clipPath id="${id}"><polygon points="${points}"/></clipPath></defs><image href="/assets/${file}" width="${w}" height="${h}" clip-path="url(#${id})"/></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" class="photo-fragment" aria-hidden="true"><defs><clipPath id="${id}"><polygon points="${points}"/></clipPath></defs><image href="${assetURL(file)}" width="${w}" height="${h}" clip-path="url(#${id})"/></svg>`;
 };
 const trainPast = () => fragment('train-past.png','80 40 290 325','89,249 108,184 129,115 148,93 193,73 252,74 260,50 279,50 291,79 332,93 339,114 347,191 365,204 356,228 348,264 345,326 301,349 177,361 128,323 100,283',531,398);
 const trainNow = () => fragment('train-present.png','250 128 255 125','258,230 260,168 269,145 282,137 322,134 346,141 380,157 412,170 449,187 474,199 498,215 499,230 459,240 399,242 324,250 277,247',600,344);
