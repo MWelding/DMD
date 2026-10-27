@@ -1,5 +1,6 @@
 import { arrivalFrames } from './chapters.js';
 import { assetURL } from './assets.js';
+import { cityApproachSeconds } from './city-approach.js';
 
 export function waitForBeat(ms, signal) {
   return new Promise((resolve,reject)=>{
@@ -17,7 +18,7 @@ export class Journey {
     this.ready=this.preload();
   }
   async preload() {
-    const sources=[...['journey/forest-window.jpg','journey/window.jpg','journey/modern-carriage.png'].map(assetURL),...arrivalFrames];
+    const sources=[...['journey/forest-window.jpg','journey/city-panorama.jpg','journey/modern-carriage.png'].map(assetURL),...arrivalFrames];
     const results=await Promise.all(sources.map(async path=>{
       const image=new Image(); image.src=path;
       try {await image.decode();return path;}catch{return null;}
@@ -45,8 +46,8 @@ export class Journey {
         await waitForBeat(this.reducedMotion.matches?150:2400,signal);
       }
       this.surface.classList.add('station');this.surface.dataset.phase='station';this.onPhase('station');
-      this.status.textContent='Arriving at the station, viewed from inside the train.';
-      await waitForBeat(this.reducedMotion.matches?500:3700,signal);
+      this.status.textContent='The countryside gives way to the city as the train slows.';
+      await waitForBeat(this.reducedMotion.matches?500:(cityApproachSeconds+.5)*1000,signal);
       this.surface.classList.add('exterior');this.surface.dataset.phase='exterior';this.onPhase('exterior');
       this.status.textContent='The train arrives, viewed from the platform.';
       const frames=this.reducedMotion.matches?this.frames.slice(-1):this.frames;

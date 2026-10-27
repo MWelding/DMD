@@ -8,9 +8,9 @@
 .arrival-controls .icon-button{border-color:#a3b09825;background:#151c1755}
 .window-shell{inset:16% 4% 22%;perspective:none;transition:inset 2.2s cubic-bezier(.2,.8,.2,1);will-change:inset}
 .train-window{border:14px solid #353d35;border-radius:100px;transform:none;background:#758175;box-shadow:0 0 0 1px #77816e66,0 0 0 9px #111810,inset 0 0 30px #0007,0 30px 70px #05090499;transition:border-color 1.8s,border-width 2s,border-radius 2.2s,box-shadow 1.8s;isolation:isolate}
-.window-photo,.station-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform,opacity;transform:scale(1.045);filter:brightness(.9) saturate(.72);transition:opacity 1.9s,transform 3.8s cubic-bezier(.2,.7,.2,1),filter 3s}
+.window-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform,opacity;transform:scale(1.045);filter:brightness(.9) saturate(.72);transition:opacity 1.9s,transform 3.8s cubic-bezier(.2,.7,.2,1),filter 3s}
 .window-photo{object-position:50% 57%;z-index:0;opacity:1}
-.station-photo{object-position:50% 62%;z-index:1;opacity:0;transform:scale(1.09) translateX(1.7%);filter:brightness(.85) saturate(.64)}
+
 .window-rim{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 2px #b2b5a825,inset 0 0 23px #111a1e88;pointer-events:none;z-index:9;transition:opacity 1.5s}
 .window-reflection{z-index:7;opacity:.8;background:linear-gradient(112deg,transparent 21%,#f3f5de0a 21.2%,transparent 47%,#e8eddb0b 47.2%,transparent 64%);mix-blend-mode:screen;transition:opacity 1.5s}
 .window-vignette{z-index:6;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,transparent 25%,#0d171320 70%,#0a131561 100%);transition:background 2s}
@@ -24,8 +24,8 @@
 .riding .forest-photo{animation:forest-travel 4.6s cubic-bezier(.3,.3,.4,1) both;filter:brightness(.87) saturate(.68)}
 .riding .window-movement{opacity:.65;animation:window-poles 2.2s linear infinite}
 .riding .arrival-bottom{opacity:0;transform:translateY(10px);pointer-events:none}
-.arrival.station .forest-photo{opacity:0}
-.arrival.station .station-photo{opacity:1;transform:scale(1.035) translateX(-.5%)}
+
+
 .arrival.station .window-movement{opacity:0;animation-duration:4s}
 .arrival.station .arrival-title{opacity:1;transform:translateY(0);transition-delay:.65s}
 .arrival-film{z-index:4;background:#172020;opacity:0;transition:opacity 1.5s,transform 4s;transform:scale(1.035)}
@@ -41,5 +41,5 @@
 @keyframes forest-travel{0%{transform:scale(1.12) translateX(2.5%);filter:brightness(.87) saturate(.68) blur(.25px)}100%{transform:scale(1.12) translateX(-3%);filter:brightness(.83) saturate(.68) blur(.35px)}}
 @keyframes window-poles{to{transform:translateX(-1200px)}}
 @media(max-height:740px) and (min-width:701px){.window-shell{inset:16% 4% 22%}.arrival-bottom{bottom:7%}.arrival-top{height:80px}}
-@media(max-width:700px){.arrival-top{height:78px}.arrival-controls{gap:16px}.window-shell{inset:16% 5% 24%}.train-window{border-width:10px;border-radius:65px;transform:none;box-shadow:0 0 0 1px #77816e66,0 0 0 6px #111810,0 25px 65px #05090499}.window-photo{object-position:49% 56%}.station-photo{object-position:53% 61%}.arrival-title h2{font-size:26vw;gap:.1em}.arrival-bottom{bottom:10%;left:6%;right:6%;gap:0;flex-direction:row}.begin-button{min-width:205px;padding:19px 25px}.arrival.exterior .window-shell{inset:0}.arrival-film img{object-position:50% 50%}.arrival-controls .icon-button{width:28px;height:28px}.arrival.exterior .arrival-top{opacity:.8}}
-@media(prefers-reduced-motion:reduce){.window-photo,.station-photo,.arrival-film{transform:none!important}.riding .window-movement{display:none}.arrival.station .arrival-title{transition-delay:0s}.arrival.exterior .window-shell{inset:8% 4% 18%}.arrival.exterior .train-window{border-radius:40px}.arrival.departed{transform:none}}
+@media(max-width:700px){.arrival-top{height:78px}.arrival-controls{gap:16px}.window-shell{inset:16% 5% 24%}.train-window{border-width:10px;border-radius:65px;transform:none;box-shadow:0 0 0 1px #77816e66,0 0 0 6px #111810,0 25px 65px #05090499}.window-photo{object-position:49% 56%}.arrival-title h2{font-size:26vw;gap:.1em}.arrival-bottom{bottom:10%;left:6%;right:6%;gap:0;flex-direction:row}.begin-button{min-width:205px;padding:19px 25px}.arrival.exterior .window-shell{inset:0}.arrival-film img{object-position:50% 50%}.arrival-controls .icon-button{width:28px;height:28px}.arrival.exterior .arrival-top{opacity:.8}}
+@media(prefers-reduced-motion:reduce){.window-photo,.arrival-film{transform:none!important}.riding .window-movement{display:none}.arrival.station .arrival-title{transition-delay:0s}.arrival.exterior .window-shell{inset:8% 4% 18%}.arrival.exterior .train-window{border-radius:40px}.arrival.departed{transform:none}}

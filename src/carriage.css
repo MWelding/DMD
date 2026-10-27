@@ -8,12 +8,10 @@
 .carriage-plane{position:absolute;left:50%;top:50%;width:max(100vw,150svh);height:max(66.666667vw,100svh);transform:translate(calc(-50% + var(--head-x)),calc(-50% + var(--head-y)));transform-origin:50% 40%;background:#bdb3a0;animation:carriage-sway 1.7s ease-in-out infinite;will-change:transform}
 .carriage-interior{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:3;pointer-events:none;filter:brightness(.85) saturate(.8)}
 .carriage-plane>.train-window{position:absolute;inset:13.35% 9.5% 31.3%;border:0;border-radius:7%;box-shadow:none;transform:none;isolation:isolate;overflow:hidden;background:#596d5d}
-.carriage-plane .window-photo,.carriage-plane .station-photo{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;transform:scale(1.03);transition:opacity 2.7s,transform 4s;filter:brightness(.9) saturate(.8)}
+.carriage-plane .window-photo{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;transform:scale(1.03);transition:opacity 2.7s,transform 4s;filter:brightness(.9) saturate(.8)}
 .carriage-plane .forest-photo{z-index:0;opacity:1;animation:none!important}
 #landscape{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0;transition:opacity 1.5s;filter:brightness(.9) saturate(.8)}
 #landscape.loaded{opacity:1}
-.carriage-plane .station-photo{opacity:0;z-index:2;object-position:50% 59%;transform:scale(1.1) translateX(3%)}
-.arrival.station .carriage-plane .station-photo{opacity:1;transform:scale(1.04) translateX(-.8%)}
 .glass-reflection{position:absolute;inset:-8%;z-index:4;pointer-events:none;background:linear-gradient(105deg,transparent 20%,#faf2d00b 21%,#faf2d006 25%,transparent 28%,transparent 49%,#f0f4ea0b 51%,transparent 56%);mix-blend-mode:screen;transform:translateX(calc(var(--head-x) * -2));transition:transform .5s ease-out;opacity:.85}
 .carriage-plane .window-vignette{z-index:5;background:radial-gradient(ellipse at center,transparent 20%,#07181825 75%,#07181866 100%)}
 .cabin-light{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(180deg,#fff4bd18,transparent 13%,transparent 80%,#261c0a18);mix-blend-mode:soft-light;animation:passing-light 5.7s ease-in-out infinite}

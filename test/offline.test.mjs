@@ -54,6 +54,7 @@ test('standalone HTML embeds its assets, has no module or stylesheet requests, a
   assert.match(html, /connect-src 'none'/);
   assert.match(html, /data:font\/ttf;base64,/);
   assert.match(html, /SIL OPEN FONT LICENSE/);
+  assert.ok(assets['/assets/journey/city-panorama.jpg'], 'moving city approach is embedded');
   for (let index = 0; index < 12; index++) assert.ok(assets[`/assets/journey/arrival-${String(index).padStart(2, '0')}.jpg`]);
   for (const stops of Object.values(chapters)) for (const chapter of stops) assert.ok(assets['/assets/' + chapter.image]);
   for (const match of html.matchAll(/data-offline-src="([^"]+)"/g)) assert.ok(assets[match[1]], match[1]);
