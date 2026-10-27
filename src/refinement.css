@@ -1,0 +1,37 @@
+/* A quieter frame for the existing collage. */
+.masthead{justify-content:flex-end}
+.main-title h1{font-family:'Installation Display',Impact,'Arial Narrow',sans-serif;font-size:clamp(45px,4.6vw,76px);font-weight:400;line-height:1.02;letter-spacing:.01em;text-transform:uppercase;transform:rotate(-7deg) skewX(-3deg);transform-origin:0 100%}
+.main-title h1 em{display:inline-block;font:inherit;letter-spacing:inherit;color:#d2b88e}
+.present-art{filter:saturate(1.18) brightness(1.04)}
+.present-art .geometry{opacity:1}
+.present-art .geometry .sun-disc{fill:#ee482d;opacity:.94}
+.present-art .geometry>path[fill]{fill:#247faf;opacity:.94}
+.present-art .geometry>circle:nth-of-type(2){color:#ffcb36;opacity:.9}
+.present-art .geometry path[stroke]{stroke:#ffd04a;opacity:1}
+.present-art .foreground-wires path{stroke:#ffc34a}
+.story-dialog[data-object=station] .story-image{filter:saturate(1.1) brightness(.96)}
+.story-text .time-route{margin-bottom:28px}
+.story-intro,.chapter-copy{white-space:pre-line}
+.story-category:empty,.story-intro:empty,.chapter-title:empty,.chapter-copy:empty{display:none}
+.speaker-icon{width:19px;height:19px;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.speaker-icon>path:first-child{fill:currentColor;stroke-width:1}
+.speaker-waves{display:none}
+.speaker-slash{display:block}
+.sound-button[aria-pressed=true]{color:#f3cf8e;background:#ac7c2a20;border-color:#e4ba6e75}
+.sound-button[aria-pressed=true] .speaker-waves{display:block}
+.sound-button[aria-pressed=true] .speaker-slash{display:none}
+.sound-button[data-state=playing] .speaker-waves{animation:sound-wave 1.3s ease-in-out infinite}
+.sound-button[data-state=muted]{color:#a5aba5}
+@keyframes sound-wave{0%,100%{opacity:1}50%{opacity:.42}}
+
+/* The window remains fixed: only the interior materials change around it. */
+.carriage-old{opacity:1;transform:scale(1);transform-origin:50% 43%;transition:opacity 3.8s cubic-bezier(.33,0,.25,1),filter 3.8s,transform 4.2s cubic-bezier(.2,.7,.2,1)}
+.carriage-modern{opacity:0;transform:scale(1.018);transform-origin:50% 43%;filter:brightness(.98) saturate(.98);transition:opacity 3.8s cubic-bezier(.33,0,.25,1),transform 4.2s cubic-bezier(.2,.7,.2,1);z-index:3}
+.arrival.morphing .carriage-old,.arrival.modern .carriage-old{opacity:0;transform:scale(.993);filter:brightness(1.08) saturate(.5)}
+.arrival.morphing .carriage-modern,.arrival.modern .carriage-modern{opacity:1;transform:scale(1)}
+.cabin-transformation{position:absolute;inset:-5%;z-index:6;pointer-events:none;opacity:0;background:linear-gradient(110deg,transparent 34%,#fff9df0a 42%,#fff9df70 48%,#fff 50%,#fff9df48 52%,transparent 61%);mix-blend-mode:soft-light;transform:translateX(-110%);filter:blur(14px)}
+.morphing .cabin-transformation{animation:cabin-material-shift 4.5s cubic-bezier(.2,.6,.2,1) both}
+.arrival.modern .carriage-plane{animation-duration:1.6s}
+.arrival.station .carriage-plane{animation-duration:2.2s}
+@keyframes cabin-material-shift{0%{opacity:0;transform:translateX(-85%)}20%{opacity:.7}48%{opacity:.9}80%{opacity:.4}100%{opacity:0;transform:translateX(85%)}}
+@media(prefers-reduced-motion:reduce){.speaker-waves,.cabin-transformation{animation:none!important}.carriage-old,.carriage-modern{transition:none!important;transform:none!important}}

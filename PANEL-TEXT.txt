@@ -1,0 +1,265 @@
+; EDIT THE TEXT THAT APPEARS AFTER CLICKING A + IN THE COLLAGE
+; Open this file in Notepad. Change the words below a [heading], then Save.
+; Keep the [headings] unchanged. No quotation marks, commas or code required.
+; Text can span multiple lines. Leave a section empty to hide its text.
+; Changes appear in the browser within about 2 seconds, including an open panel.
+; No build or server restart needed with START.cmd, START-PUBLIC.cmd or npm start.
+; For another computer, copy this file along with the project.
+; Ordinary static hosting: edit dist/panel-text.txt instead.
+; Lines beginning with a semicolon are notes and are not shown.
+
+; ============================================================
+; TRAIN - MAIN PANEL
+; ============================================================
+
+[train.category]
+RAIL / DZELZCEĻŠ
+
+[train.title]
+The shape of a journey.
+
+[train.intro]
+Some changes are felt before they are seen. A quieter carriage. A different seat. The sound of the doors.
+
+; TRAIN - PAST
+
+[train.past.year]
+1975
+
+[train.past.title]
+A familiar rhythm
+
+[train.past.label]
+MEMORY
+
+[train.past.caption]
+The railway we remember.
+
+[train.past.text]
+For generations of passengers, the rounded front and ribbed body of the older electric trains became part of the everyday landscape. In this collage, their monochrome weight stands for familiarity, repetition, and memory.
+
+; TRAIN - TRANSITION
+
+[train.transition.year]
+2000
+
+[train.transition.title]
+The in-between
+
+[train.transition.label]
+IN TRANSIT
+
+[train.transition.caption]
+A familiar form. A different colour.
+
+[train.transition.text]
+Change is rarely a clean break. An older train in a brighter livery sits between two visual worlds. The machinery remains familiar while its identity changes. This chapter is an artistic view of transition, rather than a date assigned to the photograph.
+
+; TRAIN - PRESENT
+
+[train.present.year]
+2025
+
+[train.present.title]
+The present arrives
+
+[train.present.label]
+PRESENT
+
+[train.present.caption]
+Your arrival sequence, Rīga.
+
+[train.present.text]
+Latvia’s new Škoda electric trains entered passenger service in December 2023. Their bright yellow fronts give the same daily journey a new visual identity. Modernisation changes the experience of travelling, as well as the vehicles themselves.
+
+; ============================================================
+; TRAM - MAIN PANEL
+; ============================================================
+
+[tram.category]
+STREET / TRAMVAJS
+
+[tram.title]
+The city on a line.
+
+[tram.intro]
+The streets move around it. The line remains. A tram connects more than two stops.
+
+; TRAM - PAST
+
+[tram.past.year]
+1975
+
+[tram.past.title]
+The city on a line
+
+[tram.past.label]
+MEMORY
+
+[tram.past.caption]
+Tracks through memory.
+
+[tram.past.text]
+The older tram is a small piece of the city’s collective memory: overhead wires, close-set seats, and the familiar rhythm of wheels crossing a junction. Its silhouette belongs as much to the street as the buildings beside it.
+
+; TRAM - TRANSITION
+
+[tram.transition.year]
+2000
+
+[tram.transition.title]
+A thread through the city
+
+[tram.transition.label]
+IN TRANSIT
+
+[tram.transition.caption]
+The route outlives the vehicle.
+
+[tram.transition.text]
+Buildings, passengers, and vehicles change. The line still connects familiar places. Seen as a chapter between eras, the tram is a reminder that modernisation happens along routes people already know.
+
+; TRAM - PRESENT
+
+[tram.present.year]
+2025
+
+[tram.present.title]
+A lower threshold
+
+[tram.present.label]
+PRESENT
+
+[tram.present.caption]
+Contemporary low-floor design reference, Liepāja.
+
+[tram.present.text]
+Riga’s first low-floor tram carried passengers on 1 June 2010. A lower floor changes who can board comfortably: people with pushchairs, luggage, or limited mobility. A technical change becomes a change in everyday access.
+
+; ============================================================
+; BUS - MAIN PANEL
+; ============================================================
+
+[bus.category]
+ROAD / AUTOBUSS
+
+[bus.title]
+Everyday, together.
+
+[bus.intro]
+A bus is an ordinary room in which the city meets itself. Different lives, briefly travelling in the same direction.
+
+; BUS - PAST
+
+[bus.past.year]
+1975
+
+[bus.past.title]
+A shared routine
+
+[bus.past.label]
+MEMORY
+
+[bus.past.caption]
+An ordinary room, on wheels.
+
+[bus.past.text]
+The box-like body and high steps of the older bus carry the visual language of an earlier commute. In the installation, black and white slows it down: a vehicle remembered through habit, rather than novelty.
+
+; BUS - TRANSITION
+
+[bus.transition.year]
+2000
+
+[bus.transition.title]
+A city in transition
+
+[bus.transition.label]
+IN TRANSIT
+
+[bus.transition.caption]
+A trolleybus reference from the studies.
+
+[bus.transition.text]
+The blue-and-white trolleybus brings another kind of movement into the street. Its overhead wires connect it to the city in a different way. Here it stands beside the bus as a related part of Riga’s public-transport landscape, rather than as the same vehicle.
+
+; BUS - PRESENT
+
+[bus.present.year]
+2025
+
+[bus.present.title]
+Everyday, together
+
+[bus.present.label]
+PRESENT
+
+[bus.present.caption]
+A changing street. A shared destination.
+
+[bus.present.text]
+The blue-and-white contemporary bus in the studies brings colour back into that shared space. Look at the larger windows, the articulated body, and the relationship between the passenger and the street. This is a visual comparison, not a claim that every older vehicle has disappeared.
+
+; ============================================================
+; STATION - MAIN PANEL
+; ============================================================
+
+[station.category]
+PLACE / STACIJA
+
+[station.title]
+A place between places.
+
+[station.intro]
+For someone passing through, a station is a pause. For a commuter, it becomes part of home.
+
+; STATION - PAST
+
+[station.past.year]
+1975
+
+[station.past.title]
+A fixed point
+
+[station.past.label]
+MEMORY
+
+[station.past.caption]
+The station as a landmark in memory.
+
+[station.past.text]
+The station tower is the fixed point of this moving composition. While vehicles change around it, its vertical form holds the collage together: a landmark through which personal memories can be mapped.
+
+; STATION - TRANSITION
+
+[station.transition.year]
+2000
+
+[station.transition.title]
+A place between places
+
+[station.transition.label]
+IN TRANSIT
+
+[station.transition.caption]
+Lives measured in departures.
+
+[station.transition.text]
+A departure board turns individual plans into a shared rhythm. People arrive, wait, and leave. The station belongs to all of them for a moment. In the collage it is the constant around which the vehicles move.
+
+; STATION - PRESENT
+
+[station.present.year]
+2025
+
+[station.present.title]
+The place we return to
+
+[station.present.label]
+PRESENT
+
+[station.present.caption]
+The view from your seat.
+
+[station.present.text]
+The supporting studies describe public transport as a reflection of a city and its citizens. Here the station becomes a meeting point between the old and the new. Move the lens across the collage: neither era has to erase the other.

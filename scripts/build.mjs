@@ -1,10 +1,14 @@
-import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { resolve } from 'node:path';
+import { resolve, dirname, basename } from 'node:path';
 const root = fileURLToPath(new URL('..', import.meta.url));
-await mkdir(resolve(root, 'dist'), { recursive: true });
+const output=resolve(root,'dist');
+if(dirname(output)!==resolve(root)||basename(output)!=='dist')throw new Error('Invalid generated output directory');
+await rm(output,{recursive:true,force:true});
+await mkdir(output, { recursive: true });
 await cp(resolve(root, 'public'), resolve(root, 'dist'), { recursive: true });
 await cp(resolve(root, 'src'), resolve(root, 'dist/src'), { recursive: true });
+await cp(resolve(root, 'PANEL-TEXT.txt'), resolve(root, 'dist/panel-text.txt'));
 const html = await readFile(resolve(root, 'dist/index.html'), 'utf8');
 if (!html.includes('Change in Progress')) throw new Error('Missing installation entry point');
 console.log('Built dist/ — self-contained, offline-ready installation.');

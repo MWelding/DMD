@@ -1,0 +1,42 @@
+/* The rendered landscape, glass and photographic interior occupy separate planes. */
+.arrival{--head-x:0px;--head-y:0px;background:#b5ad9b;perspective:1500px}
+.arrival-top{justify-content:flex-end;z-index:20;padding-right:4px}
+.arrival-top>.wordmark{display:none}
+.arrival-controls{padding:8px 12px;border-radius:40px;background:#14201ba3;backdrop-filter:blur(15px);border:1px solid #ffffff17}
+.arrival-controls .icon-button{background:transparent;border-color:#ffffff21}
+.window-shell.carriage-shell{position:absolute;inset:0;will-change:transform,opacity;transition:transform 2.4s cubic-bezier(.3,.1,.15,1),opacity 2s cubic-bezier(.4,0,.2,1);transform:scale(1);z-index:2;pointer-events:none}
+.carriage-plane{position:absolute;left:50%;top:50%;width:max(100vw,150svh);height:max(66.666667vw,100svh);transform:translate(calc(-50% + var(--head-x)),calc(-50% + var(--head-y)));transform-origin:50% 40%;background:#bdb3a0;animation:carriage-sway 1.7s ease-in-out infinite;will-change:transform}
+.carriage-interior{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:3;pointer-events:none;filter:brightness(.85) saturate(.8)}
+.carriage-plane>.train-window{position:absolute;inset:13.35% 9.5% 31.3%;border:0;border-radius:7%;box-shadow:none;transform:none;isolation:isolate;overflow:hidden;background:#596d5d}
+.carriage-plane .window-photo,.carriage-plane .station-photo{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;transform:scale(1.03);transition:opacity 2.7s,transform 4s;filter:brightness(.9) saturate(.8)}
+.carriage-plane .forest-photo{z-index:0;opacity:1;animation:none!important}
+#landscape{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0;transition:opacity 1.5s;filter:brightness(.9) saturate(.8)}
+#landscape.loaded{opacity:1}
+.carriage-plane .station-photo{opacity:0;z-index:2;object-position:50% 59%;transform:scale(1.1) translateX(3%)}
+.arrival.station .carriage-plane .station-photo{opacity:1;transform:scale(1.04) translateX(-.8%)}
+.glass-reflection{position:absolute;inset:-8%;z-index:4;pointer-events:none;background:linear-gradient(105deg,transparent 20%,#faf2d00b 21%,#faf2d006 25%,transparent 28%,transparent 49%,#f0f4ea0b 51%,transparent 56%);mix-blend-mode:screen;transform:translateX(calc(var(--head-x) * -2));transition:transform .5s ease-out;opacity:.85}
+.carriage-plane .window-vignette{z-index:5;background:radial-gradient(ellipse at center,transparent 20%,#07181825 75%,#07181866 100%)}
+.cabin-light{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(180deg,#fff4bd18,transparent 13%,transparent 80%,#261c0a18);mix-blend-mode:soft-light;animation:passing-light 5.7s ease-in-out infinite}
+.sill-reflection{position:absolute;top:71.7%;left:8%;right:8%;height:7%;z-index:5;pointer-events:none;opacity:.2;background:linear-gradient(100deg,transparent 5%,#d7e2a866 24%,transparent 45%,#f7f6d144 63%,transparent 83%);filter:blur(12px);animation:sill-light 3.9s linear infinite}
+.arrival-bottom{bottom:5%;z-index:15}
+.begin-button{background:linear-gradient(140deg,#14231ee8,#27352ae0);border:1px solid #c2c8b655;box-shadow:0 8px 35px #0006,inset 0 1px #ffffff12;backdrop-filter:blur(15px);color:#f2eee4}
+.riding .arrival-bottom{opacity:0;pointer-events:none}
+.riding .carriage-plane{animation-duration:.78s}
+.arrival.station .carriage-plane{animation-duration:1.35s}
+.exterior-shot{position:absolute;inset:0;z-index:3;opacity:0;pointer-events:none;transition:opacity 2s;overflow:hidden;background:#0d1718}
+.exterior-shot>.arrival-film{position:absolute;inset:0;width:100%;height:100%;opacity:1;z-index:1;transform:scale(1.04);transition:transform 6s}
+.arrival.exterior .carriage-shell{opacity:0;transform:scale(1.2)}
+.arrival.exterior .exterior-shot{opacity:1}
+.arrival.exterior .exterior-shot>.arrival-film{transform:scale(1)}
+.arrival.exterior .arrival-top{opacity:.8}
+.arrival.stopped .exterior-shot>.arrival-film{transform:scale(1.018);transition-duration:3s}
+.exterior-shot:after{content:'';position:absolute;inset:0;z-index:5;background:radial-gradient(ellipse at 50% 50%,transparent 25%,#0b141951 100%);pointer-events:none;transition:background 1.7s}
+.arrival.stopped .exterior-shot:after{background:linear-gradient(0deg,#09191b99,transparent 75%)}
+.arrival:not(.stopped)>.arrival-title{opacity:0;visibility:hidden;transform:translateY(20px);transition-delay:0s}
+.arrival.stopped>.arrival-title{position:absolute;inset:0;opacity:1;visibility:visible;z-index:10;transform:translateY(0);transition:opacity 1.6s,transform 2s;pointer-events:none}
+.arrival.stopped>.arrival-title h2{font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:clamp(80px,14vw,210px);letter-spacing:-.06em;color:#f5f1e8;text-shadow:0 5px 45px #0006}
+@keyframes carriage-sway{0%,100%{transform:translate(calc(-50% + var(--head-x)),calc(-50% + var(--head-y))) rotate(-.025deg)}35%{transform:translate(calc(-50% + var(--head-x) + .6px),calc(-50% + var(--head-y) + 1px)) rotate(.035deg)}72%{transform:translate(calc(-50% + var(--head-x) - .5px),calc(-50% + var(--head-y) - .6px)) rotate(-.015deg)}}
+@keyframes passing-light{0%,100%{opacity:.65}45%{opacity:1}62%{opacity:.45}}
+@keyframes sill-light{from{transform:translateX(9%)}to{transform:translateX(-9%)}}
+@media(max-width:700px){.carriage-plane{width:150svh;height:100svh}.arrival-top{height:76px;left:auto;right:4%;padding-right:0}.arrival-controls{gap:17px;padding:5px 10px}.arrival-bottom{bottom:7%}.begin-button{min-width:190px;padding:18px 24px}.arrival.stopped>.arrival-title h2{font-size:25vw}.carriage-interior{filter:brightness(.9) saturate(.83)}}
+@media(prefers-reduced-motion:reduce){.carriage-plane,.cabin-light,.sill-reflection{animation:none!important}.carriage-plane{transform:translate(-50%,-50%)!important}.arrival.exterior .carriage-shell{transform:none}.exterior-shot>.arrival-film{transform:none!important}.arrival:not(.stopped)>.arrival-title{transform:none}.glass-reflection{transform:none}.arrival.exterior .carriage-plane>.train-window{inset:13.35% 9.5% 31.3%}}

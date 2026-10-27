@@ -1,61 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#eee9de"><meta name="description" content="A journey through Riga's public transport. Explore a living constructivist collage, revealing the present beneath the past.">
-  <title>Change in Progress — Riga in Motion</title>
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/src/styles.css">
-  <link rel="preload" href="/assets/station.jpg" as="image">
-</head>
-<body>
-  <a class="skip-link" href="#explore">Skip to the installation</a>
-  <main id="installation">
-    <header class="masthead">
-      <a class="wordmark" href="/" aria-label="Change in Progress, start again"><span class="brand-mark" aria-hidden="true">↗</span><span>CHANGE<br>IN PROGRESS</span></a>
-      <div class="exhibition-label">AN INTERACTIVE TRANSPORT EXHIBITION<span>RĪGA, LATVIA · 56°56′N 24°06′E</span></div>
-      <nav aria-label="Installation controls"><button id="about-button">The idea <span>↗</span></button><button id="sound-button" aria-pressed="false" aria-label="Enable ambient sound"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sound-label">Sound off</span></button><button id="fullscreen-button" aria-label="Enter full screen">⛶</button></nav>
-    </header>
-    <section class="experience" id="explore" tabindex="-1" aria-label="Interactive collage of Riga's transport">
-      <div class="editorial">
-        <p class="eyebrow"><span class="live-dot"></span> PAST / PRESENT / IN BETWEEN</p>
-        <h1 aria-label="Change in Progress">CHANGE<br>IN <span class="outline">PRO</span><br><span class="last-word">GRESS<span class="title-arrow" aria-hidden="true">↗</span></span></h1>
-        <p class="intro-copy">The city moves.<br>So do we.</p>
-        <p class="intro-description">A journey through Riga’s public transport.<br>Between what we remember<br>and what comes next.</p>
-        <button class="lens-toggle" id="lens-button" aria-pressed="true"><span class="lens-icon" aria-hidden="true"></span><span>Move to reveal the present<small>Click an object to discover its story</small></span><span class="toggle-track" aria-hidden="true"></span></button>
-      </div>
-      <div class="scene" id="scene" data-era="0" data-hover="" aria-label="Four objects to explore">
-        <div class="scene-art" id="past-art" aria-hidden="true"></div>
-        <div class="scene-art present-art" id="present-art" aria-hidden="true"></div>
-        <div class="hotspots">
-          <button class="hotspot station-hit" data-object="station" aria-label="Explore the station"><span class="object-label"><b>04</b> THE STATION <i>↗</i></span></button>
-          <button class="hotspot tram-hit" data-object="tram" aria-label="Explore the tram"><span class="object-label"><b>02</b> THE TRAM <i>↗</i></span></button>
-          <button class="hotspot train-hit" data-object="train" aria-label="Explore the train"><span class="object-label"><b>01</b> THE TRAIN <i>↗</i></span></button>
-          <button class="hotspot bus-hit" data-object="bus" aria-label="Explore the bus"><span class="object-label"><b>03</b> THE BUS <i>↗</i></span></button>
-        </div>
-        <div class="scene-note" aria-hidden="true"><span>RĪGA</span><span>A CITY IN<br>CONSTANT MOTION.</span></div>
-        <div class="art-caption"><span class="caption-line"></span> A LIVING COLLAGE / FOUR STORIES</div>
-        <span class="lens-ring" id="lens-ring" aria-hidden="true"><span>REVEAL</span><i>+</i></span>
-      </div>
-      <span class="vertical-note" aria-hidden="true">THE PAST IS STILL HERE. THE PRESENT MOVES BESIDE IT.</span>
-      <div class="visited-status" id="visited-status" aria-live="polite">00 / 04 STORIES DISCOVERED</div>
-    </section>
-    <footer class="journey-bar">
-      <div class="era-caption"><span id="era-label">THE PAST</span><strong id="era-name">A familiar rhythm</strong></div>
-      <div class="timeline" role="group" aria-label="Choose an interpretive era"><div class="timeline-line"></div><button data-era="0" aria-pressed="true"><span class="timeline-dot"></span><b>1975</b><small>MEMORY</small></button><button data-era="1" aria-pressed="false"><span class="timeline-dot"></span><b>2000</b><small>TRANSITION</small></button><button data-era="2" aria-pressed="false"><span class="timeline-dot"></span><b>2025</b><small>POSSIBILITY</small></button></div>
-      <button class="replay" id="replay-button"><span>↶</span> Take the journey again</button>
-    </footer>
-  </main>
-  <section class="arrival" id="arrival" aria-label="Train arrival introduction">
-    <div class="arrival-top"><span>CHANGE IN PROGRESS</span><button id="skip-arrival">Skip journey ↗</button></div>
-    <div class="window-surround"><div class="train-window"><div class="moving-landscape"><div class="landscape-sky"></div><div class="landscape-city"></div><div class="landscape-photo"></div><div class="landscape-poles"></div></div><div class="window-reflection"></div><div class="window-destination"><span>NEXT STOP / NĀKAMĀ PIETURA</span><h2>RĪGA<span>↗</span></h2><p>Every journey carries a little of the past.</p></div><div class="window-edge"></div></div></div>
-    <div class="arrival-bottom"><div><span class="live-dot"></span> <span id="journey-status">YOUR JOURNEY STARTS HERE</span></div><button id="begin-button">Take a seat <span>→</span></button><span class="journey-duration">A SHORT JOURNEY THROUGH TIME</span></div>
-    <div class="arrival-progress"><i id="arrival-progress-fill"></i></div>
-  </section>
-  <dialog id="story-dialog" class="story-dialog" aria-labelledby="story-title"><button class="close-dialog" aria-label="Close story">✕</button><div id="story-content"></div></dialog>
-  <dialog id="about-dialog" class="about-dialog" aria-labelledby="about-title"><button class="close-dialog" aria-label="Close exhibition notes">✕</button><p class="eyebrow">THE IDEA / IDEJA</p><h2 id="about-title">The past is still here.</h2><p class="about-lead">“I don’t want to erase the past, only to show what it looks like when the present moves in beside it.”</p><p class="quote-credit">FROM THE SUPPLIED SUPPORTING STUDIES</p><p>Change in Progress explores the public transport of Riga through memory, contrast, and movement. Monochrome vehicles carry the weight of routine. Colour reveals the energy of change. The station holds both worlds together.</p><p>The collage develops the supplied research into Constructivist geometry, photographic fragments, surreal scale, and a moving spotlight. The dates 1975, 2000, and 2025 are interpretive chapters, rather than dates attributed to the reference photographs.</p><div class="about-instructions"><b>HOW TO EXPLORE</b><p>Move your pointer to reveal colour. Select an object or use Tab and Enter to open its story. Choose an era below the artwork. On a touchscreen, drag across the collage to move the lens and tap a label to open a story.</p></div><p class="small-print">Developed from the supplied “Change in Progress” supporting studies for the transport digital-installation brief. Photographs remain the property of their respective creators. Source and location notes appear inside each story. Sound is generated locally and starts only when enabled.</p></dialog>
-  <div class="toast" id="toast" role="status"></div>
-  <noscript>This installation needs JavaScript. Enable it to explore the collage and transport stories.</noscript>
-  <script type="module" src="/src/app.js"></script>
-</body>
-</html>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0b0d0e"><meta name="description" content="An intimate journey through Riga. An interactive collage of public transport, memory, and change.">
+<title>Change in Progress — An installation</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/src/cinema.css"><link rel="stylesheet" href="/src/window.css"><link rel="stylesheet" href="/src/carriage.css"><link rel="stylesheet" href="/src/fragments.css?v=modern-journey-1"><link rel="stylesheet" href="/src/refinement.css?v=modern-journey-1"><link rel="stylesheet" href="/src/motion.css?v=elastic-1"><link rel="preload" href="/assets/journey/forest-window.jpg" as="image">
+</head><body>
+<a class="skip-link" href="#explore">Skip to the installation</a>
+<main id="installation" inert>
+<header class="masthead"><nav aria-label="Installation controls"><button class="icon-button" id="about-button" aria-label="About the installation">i</button><button class="icon-button sound-button" id="sound-button" aria-pressed="false" aria-label="Enable sound"><svg viewBox="0 0 24 24" class="speaker-icon" aria-hidden="true"><path d="M10 5L5 9H2V15H5L10 19Z"/><g class="speaker-waves"><path d="M14 8Q18 12 14 16M17 5Q24 12 17 19"/></g><path class="speaker-slash" d="M15 9L21 15M21 9L15 15"/></svg></button><button class="icon-button" id="fullscreen-button" aria-label="Enter full screen">⛶</button></nav></header>
+<section class="experience" id="explore" tabindex="-1" aria-label="Interactive transport collage"><div class="ambient-orbit" aria-hidden="true"></div>
+<div class="scene" id="scene" data-hover="" aria-label="Explore the train, tram, bus and station"><div class="scene-art" id="past-art" aria-hidden="true"></div><div class="scene-art present-art" id="present-art" aria-hidden="true"></div>
+<div class="hotspots"><button class="hotspot extra-hit board-hit" data-object="station" aria-label="Explore the departure board"><span class="object-marker">+</span><span class="object-label">Departures <i>↗</i></span></button><button class="hotspot extra-hit clock-hit" data-object="station" aria-label="Explore the station clock"><span class="object-marker">+</span><span class="object-label">Time <i>↗</i></span></button><button class="hotspot extra-hit ticket-hit" data-object="train" aria-label="Explore the journey ticket"><span class="object-marker">+</span><span class="object-label">Journey <i>↗</i></span></button>
+<button class="hotspot station-hit" data-object="station" aria-label="Explore the station"><span class="object-marker">+</span><span class="object-label">Station <i>↗</i></span></button>
+<button class="hotspot tram-hit" data-object="tram" aria-label="Explore the tram"><span class="object-marker">+</span><span class="object-label">Tram <i>↗</i></span></button>
+<button class="hotspot train-hit" data-object="train" aria-label="Explore the train"><span class="object-marker">+</span><span class="object-label">Train <i>↗</i></span></button>
+<button class="hotspot bus-hit" data-object="bus" aria-label="Explore the bus"><span class="object-marker">+</span><span class="object-label">Bus <i>↗</i></span></button>
+</div><div class="lens-ring" aria-hidden="true"></div></div>
+<div class="main-title"><h1>Always<br><em>in motion.</em></h1></div></section>
+<footer class="experience-footer"><button class="quiet-button replay" id="replay-button"><span aria-hidden="true">↶</span> The journey</button></footer>
+</main>
+<section class="arrival" id="arrival" data-phase="ready" aria-label="A journey seen from inside a train"><div class="arrival-top"><div class="arrival-controls"><button class="icon-button sound-button" id="journey-sound" aria-pressed="false" aria-label="Mute train sound"><svg viewBox="0 0 24 24" class="speaker-icon" aria-hidden="true"><path d="M10 5L5 9H2V15H5L10 19Z"/><g class="speaker-waves"><path d="M14 8Q18 12 14 16M17 5Q24 12 17 19"/></g><path class="speaker-slash" d="M15 9L21 15M21 9L15 15"/></svg></button><button class="quiet-button" id="skip-arrival">Skip <span>↗</span></button></div></div>
+<div class="window-shell carriage-shell" id="window-shell"><div class="carriage-plane">
+<div class="train-window"><img class="window-photo forest-photo" src="/assets/journey/forest-window.jpg" alt="Countryside through the train window"><canvas id="landscape" aria-hidden="true"></canvas><img class="station-photo" src="/assets/journey/window.jpg" alt="A station platform coming into view"><div class="glass-reflection" aria-hidden="true"></div><div class="window-vignette" aria-hidden="true"></div></div>
+<img class="carriage-interior carriage-old" src="/assets/journey/latvian-carriage.png" alt="A Latvian train carriage with pale panels, metal window surround and orange seats"><img class="carriage-interior carriage-modern" src="/assets/journey/modern-carriage.png" alt="A modern Latvian carriage with white panels, dark patterned seats and yellow handles"><div class="cabin-transformation" aria-hidden="true"></div><div class="cabin-light" aria-hidden="true"></div><div class="sill-reflection" aria-hidden="true"></div>
+</div></div>
+<div class="exterior-shot" aria-hidden="true"><div class="arrival-film" id="arrival-film"><img id="film-back" alt=""><img id="film-front" alt=""></div></div>
+<div class="arrival-title" aria-hidden="true"><h2>RĪGA</h2></div>
+<div class="arrival-bottom"><button class="begin-button glass" id="begin-button">Begin journey <span>→</span></button></div><span class="sr-only" id="journey-status" role="status"></span></section>
+<dialog id="story-dialog" class="story-dialog glass" aria-labelledby="story-title"><button class="close-dialog icon-button" aria-label="Close story">×</button><div id="story-content"></div></dialog>
+<dialog id="about-dialog" class="about-dialog glass" aria-labelledby="about-title"><button class="close-dialog icon-button" aria-label="Close exhibition notes">×</button><div class="about-image"><img src="/assets/original-collage.png" alt="The original supporting-studies collage: Riga station, older trains and yellow contemporary trains assembled in impossible proportions"></div><div class="about-text"><span class="small-label">THE ORIGINAL COMPOSITION</span><h2 id="about-title">The past<br>moves with us.</h2><p>“I don’t want to erase the past, only to show what it looks like when the present moves in beside it.”</p><span class="quote-credit">FROM THE SUPPORTING STUDIES</span><details><summary>Inside the installation <span>+</span></summary><p>Your original collage and photographs become a moving space. Monochrome carries memory; the cursor lets colour emerge. Select a vehicle to explore its own timeline.</p><p>Dates inside the stories are interpretive chapters, not dates attributed to the photographs. The contemporary tram reference is from Liepāja. </p><div class="field-notes"><img src="/assets/journey/bus-stop.jpg" alt="Personal observation at a Riga bus stop" loading="lazy"><img src="/assets/journey/station-approach.jpg" alt="Walking towards the station" loading="lazy"><img src="/assets/journey/freight.jpg" alt="Freight wagons seen from the railway platform" loading="lazy"></div></details></div></dialog>
+<div class="cursor" id="cursor" aria-hidden="true"></div><div class="toast glass" id="toast" role="status"></div><noscript>This installation needs JavaScript to play the journey and explore the collage.</noscript><script type="module" src="/src/experience.js"></script>
+</body></html>

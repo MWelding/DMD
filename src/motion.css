@@ -1,0 +1,26 @@
+.motion-definitions{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+/* The outer cutouts retain their pointer parallax and their original hit targets. */
+[data-deform=enabled] .piece-station .photo-fragment{filter:url(#elastic-station)}
+[data-deform=enabled] .piece-tram .photo-fragment{filter:url(#elastic-tram)}
+[data-deform=enabled] .piece-bus .photo-fragment{filter:url(#elastic-bus)}
+[data-motion=paused] .piece-inner{animation-play-state:paused}
+.clock-art{overflow:visible}
+.clock-hand{transform-origin:110px 110px;stroke:#333d37;stroke-linecap:round;fill:none}
+.clock-hour{stroke-width:6;transform:rotate(var(--clock-hour,300deg))}
+.clock-minute{stroke-width:3.8;transform:rotate(var(--clock-minute,60deg))}
+.clock-second{stroke:#b17d45;stroke-width:1.5;transform:rotate(var(--clock-second,0deg))}
+.clock-running .clock-hour{animation:clock-hours 43200s linear infinite}
+.clock-running .clock-minute{animation:clock-minutes 3600s linear infinite}
+.clock-running .clock-second{animation:clock-seconds 60s linear infinite}
+.clock-running .clock-hand{animation-play-state:paused}
+[data-motion=running] .clock-running .clock-hand{animation-play-state:running}
+.signal-amber,.signal-green{transform-box:fill-box;transform-origin:center}
+.signal-amber{animation:signal-amber 8s ease-in-out infinite;animation-play-state:paused}
+.signal-green{animation:signal-green 8s ease-in-out infinite;animation-play-state:paused}
+[data-motion=running] .signal-amber,[data-motion=running] .signal-green{animation-play-state:running}
+@keyframes clock-hours{from{transform:rotate(var(--clock-hour))}to{transform:rotate(calc(var(--clock-hour) + 360deg))}}
+@keyframes clock-minutes{from{transform:rotate(var(--clock-minute))}to{transform:rotate(calc(var(--clock-minute) + 360deg))}}
+@keyframes clock-seconds{from{transform:rotate(var(--clock-second))}to{transform:rotate(calc(var(--clock-second) + 360deg))}}
+@keyframes signal-amber{0%,12%,100%{opacity:1;fill:#edb94c}25%,86%{opacity:.32;fill:#a78d60}}
+@keyframes signal-green{0%,16%,100%{opacity:.35;fill:#495b4b}32%,78%{opacity:1;fill:#9ac39b}}
+@media(prefers-reduced-motion:reduce){.piece .photo-fragment{filter:none!important}.clock-hand,.signal-amber,.signal-green{animation:none!important}}

@@ -7,7 +7,9 @@ test('installation serves its entry, modules, content and assets', async t => {
   const server = createServer(); await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   t.after(()=>new Promise(resolve=>server.close(resolve)));
   const base = `http://127.0.0.1:${server.address().port}`;
-  for (const path of ['/','/src/app.js','/src/styles.css','/assets/station.jpg']) assert.equal((await fetch(base+path)).status,200,path);
+  for (const path of ['/','/src/experience.js','/src/cinema.css','/src/carriage.css','/src/train-view.js','/assets/journey/latvian-carriage.png','/assets/journey/countryside-panorama.png','/assets/station.jpg','/assets/journey/arrival-00.jpg','/assets/journey/arrival-11.jpg','/assets/journey/window.jpg']) assert.equal((await fetch(base+path)).status,200,path);
+  const html=await (await fetch(base+'/')).text();
+  assert.doesNotMatch(html.split('</main>')[0],/\b(1975|2000|2025)\b/,'time markers stay inside secondary views');
   const res = await fetch(base+'/api/exhibits'); assert.deepEqual(await res.json(),exhibits);
   assert.equal((await fetch(base+'/missing')).status,404);
   assert.equal((await fetch(base+'/',{method:'POST'})).status,405);

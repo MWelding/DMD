@@ -1,0 +1,45 @@
+/* A front-facing carriage window, restored from the first installation. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.arrival{background:radial-gradient(ellipse at 50% 45%,#292f29 0,#171d18 58%,#101511 100%);transition:opacity 1.6s cubic-bezier(.22,.65,.2,1),transform 2s cubic-bezier(.2,.8,.2,1),visibility 1.6s}
+.arrival.departed{opacity:0;transform:scale(1.035);visibility:hidden;pointer-events:none}
+.arrival.resetting,.arrival.resetting *{transition:none!important;animation:none!important}
+.arrival-top{height:96px;transition:opacity .8s;z-index:12}
+.arrival-controls{display:flex;align-items:center;gap:24px}
+.arrival-controls .icon-button{border-color:#a3b09825;background:#151c1755}
+.window-shell{inset:16% 4% 22%;perspective:none;transition:inset 2.2s cubic-bezier(.2,.8,.2,1);will-change:inset}
+.train-window{border:14px solid #353d35;border-radius:100px;transform:none;background:#758175;box-shadow:0 0 0 1px #77816e66,0 0 0 9px #111810,inset 0 0 30px #0007,0 30px 70px #05090499;transition:border-color 1.8s,border-width 2s,border-radius 2.2s,box-shadow 1.8s;isolation:isolate}
+.window-photo,.station-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform,opacity;transform:scale(1.045);filter:brightness(.9) saturate(.72);transition:opacity 1.9s,transform 3.8s cubic-bezier(.2,.7,.2,1),filter 3s}
+.window-photo{object-position:50% 57%;z-index:0;opacity:1}
+.station-photo{object-position:50% 62%;z-index:1;opacity:0;transform:scale(1.09) translateX(1.7%);filter:brightness(.85) saturate(.64)}
+.window-rim{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 2px #b2b5a825,inset 0 0 23px #111a1e88;pointer-events:none;z-index:9;transition:opacity 1.5s}
+.window-reflection{z-index:7;opacity:.8;background:linear-gradient(112deg,transparent 21%,#f3f5de0a 21.2%,transparent 47%,#e8eddb0b 47.2%,transparent 64%);mix-blend-mode:screen;transition:opacity 1.5s}
+.window-vignette{z-index:6;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,transparent 25%,#0d171320 70%,#0a131561 100%);transition:background 2s}
+.window-movement{z-index:2;inset:-4% -80%;opacity:0;background:repeating-linear-gradient(90deg,transparent 0 790px,#13201c22 793px,#13201c66 802px,#13201c22 809px,transparent 812px 1200px);filter:blur(1px);transition:opacity 1s}
+.arrival-title{position:absolute;inset:0;display:grid;place-items:center;z-index:8;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity 1.5s,transform 2s}
+.arrival-title h2{font:400 clamp(110px,16vw,250px)/1 'Installation Display',Impact,sans-serif;letter-spacing:-.025em;margin:0;color:#eee9dd;text-shadow:0 6px 45px #0e1d1699;display:flex;align-items:center;gap:.16em}
+.arrival-title h2 span{font-family:Arial,sans-serif;font-size:.75em;font-weight:300;color:#c8a67e;transform:translateY(.05em)}
+.arrival-bottom{bottom:8%;left:4%;right:4%;display:flex;justify-content:center;transition:opacity .8s,transform 1s;z-index:12}
+.begin-button{min-width:205px;border-radius:40px;padding:21px 26px;background:linear-gradient(140deg,#59614b33,#1b291d88);border-color:#a7af923b;box-shadow:0 15px 40px #0003,inset 0 1px #eef3d20a}
+.begin-button:hover{border-color:#c8b79499;background:#68705b50}
+.riding .forest-photo{animation:forest-travel 4.6s cubic-bezier(.3,.3,.4,1) both;filter:brightness(.87) saturate(.68)}
+.riding .window-movement{opacity:.65;animation:window-poles 2.2s linear infinite}
+.riding .arrival-bottom{opacity:0;transform:translateY(10px);pointer-events:none}
+.arrival.station .forest-photo{opacity:0}
+.arrival.station .station-photo{opacity:1;transform:scale(1.035) translateX(-.5%)}
+.arrival.station .window-movement{opacity:0;animation-duration:4s}
+.arrival.station .arrival-title{opacity:1;transform:translateY(0);transition-delay:.65s}
+.arrival-film{z-index:4;background:#172020;opacity:0;transition:opacity 1.5s,transform 4s;transform:scale(1.035)}
+.arrival-film img{filter:brightness(.88) saturate(.75);object-position:50% 48%;transition:opacity .26s linear}
+.arrival.exterior .window-shell{inset:0}
+.arrival.exterior .train-window{border-radius:0;border-width:0;border-color:transparent;box-shadow:none}
+.arrival.exterior .arrival-film{opacity:1;transform:scale(1)}
+.arrival.exterior .arrival-title{opacity:0;transform:scale(1.035);transition-delay:0s;transition-duration:1s}
+.arrival.exterior .window-rim,.arrival.exterior .window-reflection{opacity:0}
+.arrival.exterior .arrival-top{opacity:.65}
+.arrival.stopped .arrival-film{transform:scale(1.018);transition-duration:2.5s}
+.arrival.stopped .window-vignette{background:radial-gradient(ellipse at center,transparent 20%,#09141288 100%)}
+@keyframes forest-travel{0%{transform:scale(1.12) translateX(2.5%);filter:brightness(.87) saturate(.68) blur(.25px)}100%{transform:scale(1.12) translateX(-3%);filter:brightness(.83) saturate(.68) blur(.35px)}}
+@keyframes window-poles{to{transform:translateX(-1200px)}}
+@media(max-height:740px) and (min-width:701px){.window-shell{inset:16% 4% 22%}.arrival-bottom{bottom:7%}.arrival-top{height:80px}}
+@media(max-width:700px){.arrival-top{height:78px}.arrival-controls{gap:16px}.window-shell{inset:16% 5% 24%}.train-window{border-width:10px;border-radius:65px;transform:none;box-shadow:0 0 0 1px #77816e66,0 0 0 6px #111810,0 25px 65px #05090499}.window-photo{object-position:49% 56%}.station-photo{object-position:53% 61%}.arrival-title h2{font-size:26vw;gap:.1em}.arrival-bottom{bottom:10%;left:6%;right:6%;gap:0;flex-direction:row}.begin-button{min-width:205px;padding:19px 25px}.arrival.exterior .window-shell{inset:0}.arrival-film img{object-position:50% 50%}.arrival-controls .icon-button{width:28px;height:28px}.arrival.exterior .arrival-top{opacity:.8}}
+@media(prefers-reduced-motion:reduce){.window-photo,.station-photo,.arrival-film{transform:none!important}.riding .window-movement{display:none}.arrival.station .arrival-title{transition-delay:0s}.arrival.exterior .window-shell{inset:8% 4% 18%}.arrival.exterior .train-window{border-radius:40px}.arrival.departed{transform:none}}
